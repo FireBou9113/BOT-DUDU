@@ -105,4 +105,4 @@ async def receber(ctx):
     else:
         await ctx.send('N tem link')
 
-bot.run('MTQzMDY3OTY5MTAzMDgyNzA2OQ.GiIzmm.G4bUwbJhojeXGupQuEBzLPhxfHL7TQgSr1Yyl8')
+bot.run('SEU TOKEN AQUI')
