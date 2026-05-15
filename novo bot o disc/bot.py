@@ -105,4 +105,31 @@ async def receber(ctx):
     else:
         await ctx.send('N tem link')
 
+@bot.command()
+async def gif(ctx, *, tema):
+    try:
+        api_key = 'SUA_API_KEY'
+
+        url = (
+            f'https://tenor.googleapis.com/v2/search'
+            f'?q={tema}&key={api_key}&limit=10'
+        )
+
+        resposta = requests.get(url)
+        dados = resposta.json()
+
+        gifs = dados['results']
+
+        if gifs:
+            gif_aleatorio = random.choice(gifs)
+            link_gif = gif_aleatorio['media_formats']['gif']['url']
+
+            await ctx.send(f'GIF de {tema}: {link_gif}')
+        else:
+            await ctx.send('Nenhum GIF encontrado.')
+
+    except Exception as erro:
+        print(erro)
+        await ctx.send('Erro ao buscar GIF.')
+
 bot.run('SEU TOKEN AQUI')
